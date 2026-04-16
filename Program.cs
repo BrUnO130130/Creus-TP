@@ -1,3 +1,13 @@
-﻿Console.WriteLine("Hola Mundo");
-int a = 10, b = 5;
-Console.WriteLine(a + b);
+﻿abstract class Cuenta
+{
+    String TipoCuenta;
+    double Saldo;
+    String Titular;
+    int CBU;
+}
+
+public interface ITransferible
+{
+    void Transferir(decimal monto, ITransferible destino);
+    string NumeroCuenta { get; }
+}
