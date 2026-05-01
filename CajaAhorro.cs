@@ -27,5 +27,11 @@ public class CajaAhorro : Cuenta, ITransferible
     {
         Retirar(monto);
         destino.RecibirTransferencia(monto);
+        
+        if (destino == null)
+            throw new ArgumentException("Destino inválido");
+
+        if (destino.NumeroCuenta == this.NumeroCuenta)
+            throw new InvalidOperationException("No se puede transferir a la misma cuenta");
     }
 }
