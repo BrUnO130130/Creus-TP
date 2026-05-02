@@ -11,7 +11,6 @@ public class Banco
         if (cuenta == null)
             throw new ArgumentException("La cuenta no puede ser null");
 
-        // Evita duplicados por número
         if (cuentas.Any(c => c.NumeroCuenta == cuenta.NumeroCuenta))
             throw new InvalidOperationException("Ya existe una cuenta con ese número");
 
@@ -27,9 +26,9 @@ public class Banco
     {
         Console.WriteLine("\n--- REPORTE DE CUENTAS ---");
 
-        foreach (var cuenta in cuentas)
+        foreach (var c in cuentas)
         {
-            Console.WriteLine(cuenta); // usa ToString()
+            Console.WriteLine(c);
         }
     }
 }

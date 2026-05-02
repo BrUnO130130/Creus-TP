@@ -15,13 +15,16 @@ public class CuentaCorriente : Cuenta, ITransferible
         if (Saldo - monto < limiteDescubierto)
             throw new InvalidOperationException($"Límite de descubierto alcanzado. Límite: {limiteDescubierto:C}");
         Saldo -= monto;
+        Console.WriteLine($"{Titular} Retiraste {monto}");
     }
 
     public void RecibirTransferencia(decimal monto)
     {
-        if (monto <= 0)
+        if (monto <= 0){ 
             throw new ArgumentException("El monto debe mayor a cero.");
+        }
         Saldo += monto;
+        Console.WriteLine($"{Titular} Recibiste {monto}");
     }
 
     public void Transferir(decimal monto, ITransferible destino)
@@ -29,11 +32,12 @@ public class CuentaCorriente : Cuenta, ITransferible
         Retirar(monto);
         destino.RecibirTransferencia(monto);
 
-        if (destino == null)
+        if (destino == null){ 
             throw new ArgumentException("Destino inválido");
-
-        if (destino.NumeroCuenta == this.NumeroCuenta)
+            }
+        if (destino.NumeroCuenta == this.NumeroCuenta){ 
             throw new InvalidOperationException("No se puede transferir a la misma cuenta");
+            }
     }
 
 
