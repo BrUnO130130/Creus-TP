@@ -10,10 +10,12 @@ public class CuentaCorriente : Cuenta, ITransferible
 
     public override void Retirar(decimal monto)
     {
-        if (monto <= 0)
+        if (monto <= 0){
             throw new ArgumentException("El monto a retirar debe ser positivo.");
-        if (Saldo - monto < limiteDescubierto)
+            }
+        if (Saldo - monto < limiteDescubierto){
             throw new InvalidOperationException($"Límite de descubierto alcanzado. Límite: {limiteDescubierto:C}");
+            }
         Saldo -= monto;
         Console.WriteLine($"{Titular} Retiraste {monto}");
     }

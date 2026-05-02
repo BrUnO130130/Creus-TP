@@ -1,4 +1,6 @@
-﻿class Program
+﻿using System.ComponentModel;
+
+class Program
 {
     static void Main(string[] args)
     {
@@ -10,6 +12,7 @@
             var corriente2 = new CuentaCorriente("003", "Bruno", 5000, -10000);
             var caja2 = new CajaAhorro("004", "Maria", 350);
 
+        // instanciando los objetos de las clases CajaAhorro y CuentaCorriente
         try
         {
 
@@ -17,6 +20,8 @@
             banco.AgregarCuenta(corriente);
             banco.AgregarCuenta(corriente2);
             banco.AgregarCuenta(caja2);
+
+            //agregando los objetos a la lista Cuentas con el metodo AgregarCuenta
 
         }
         catch (Exception ex)
@@ -27,9 +32,7 @@
         try{
             caja2.Depositar(350);        
             caja.Depositar(500);
-            corriente2.Depositar(0);
-
-            
+            corriente2.Depositar(0);  
         }
         catch (Exception ex)
         {
@@ -39,9 +42,7 @@
         try{
             caja.Retirar(200);
             caja2.Retirar(800);
-            caja.Retirar(5000);
-
-            
+            caja.Retirar(5000); 
         }
         catch (Exception ex)
         {
@@ -51,9 +52,7 @@
         try{
             caja.Transferir(300, corriente);
             corriente2.Transferir(7000, caja2);
-            caja.Transferir(500, caja);            
-
-            
+            caja.Transferir(500, caja);               
         }
         catch (Exception ex)
         {
@@ -61,8 +60,11 @@
         }    
         Console.WriteLine("----------------------");
 
-
+        //probando los distintos metodos Transferir, Depositar y Retirar
+        //con try catch para simular los errores y que no se corte la ejecucion
 
         banco.MostrarReporte();
+
+        //mostrando el estado final de las cuentas con el metodo MostrarReporte
     }
 }
